@@ -1,0 +1,22 @@
+<aura:component implements="force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">   
+    <lightning:card title="Case Detail" iconName="standard:case">
+        <p class="slds-p-horizontal_small">
+        <lightning:recordViewForm recordId="{!v.recordId}" objectApiName="Case">
+              <div class="slds-grid full forcePageBlockSectionRow">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning:outputField fieldName="CaseNumber" />
+                    <lightning:outputField fieldName="Subject" />
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning:outputField fieldName="Status_External__c"/>
+                    <lightning:outputField fieldName="ContactEmail"/>
+                </div>
+              </div>
+              <div class="slds-theme_default">
+                  <lightning:outputField fieldName="Description"/>
+              </div>
+        </lightning:recordViewForm>
+        </p>
+    </lightning:card>
+    
+</aura:component>

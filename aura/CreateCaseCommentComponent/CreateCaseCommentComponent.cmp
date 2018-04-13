@@ -1,0 +1,33 @@
+<aura:component controller="CommunityCaseDisplayController" implements="force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="HideMe" type="Aura.Action" default="{!c.closePopup}"/> 
+    <aura:attribute name="newComment" type="String"/>
+    
+    <div role="dialog" aura:id="modelDiv" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-hide">
+      <div class="slds-modal__container">
+        <!-- ###### MODAL BOX HEADER Part Start From Here ######-->
+        <div class="slds-modal__header">
+            <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!v.HideMe}">
+                X
+                <span class="slds-assistive-text">Close</span>
+            </button> 
+        </div>
+        
+        <!--###### MODAL BOX BODY Part Start From Here ######-->
+        <div class="slds-modal__content">
+    	<lightning:card title="New Comment" iconName="standard:custom">
+        <p class="slds-p-horizontal_small"> 
+            <!-- Display the form -->
+             <lightning:textarea aura:id="commentField" name="CommentBody" label="limit to 1200 characters" class="cmtText"
+                              maxlength="1200" messageWhenTooLong="Max character limit exceeded."                     
+                              value="{!v.newComment}" required="true"/>
+                
+            <lightning:button label="Cancel" onclick="{!v.HideMe}" class="slds-m-top_medium" />
+            <lightning:button label="Add" onclick="{!c.handleAddComment}"
+                       variant="brand" class="slds-m-top_medium"/>
+        </p>
+        </lightning:card>    
+        </div>
+      </div>
+    </div>
+    <div aura:id="backGroundSectionId" class="slds-backdrop slds-backdrop--close"></div>    
+</aura:component>
